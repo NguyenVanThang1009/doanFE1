@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaleHub - Fashion & Clothing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://kit.fontawesome.com/38242464b2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="public/js/script.js">
+
+    <style>
+        .custom-header .nav-link {
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            color: #000;
+            transition: color 0.3s;
+        }
+
+        .custom-header .nav-link:hover {
+            color: #777;
+        }
+
+        .custom-header .social-icons i {
+            font-size: 20px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .custom-header .social-icons i:hover {
+            color: #777;
+        }
+
+        .custom-header .utility-icons i {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .custom-header .cart-badge {
+            background-color: #fce181;
+            color: #000;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+
+        .custom-header .logo-text {
+            font-size: 40px;
+            letter-spacing: -1px;
+        }
+
+        .custom-header .logo-subtext {
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: #b0b0b0;
+        }
+
+        .banner-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner-card img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.4s ease;
+        }
+
+        .banner-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .banner-content {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            width: 100%;
+        }
+
+        .banner-content h5 {
+            color: #fff;
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-custom {
+            background-color: #fff;
+            color: #000;
+            border: 1px solid #000;
+            padding: 12px 30px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 0;
+            box-shadow: 4px 4px 0px #000000;
+            transition: all 0.2s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #000;
+            color: #fff;
+            box-shadow: 2px 2px 0px #000000;
+            transform: translate(2px, 2px);
+        }
+
+        .btn-outline-custom {
+            background-color: transparent;
+            color: #000;
+            border: 1px solid #000;
+            padding: 12px 30px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-custom:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .custom-tabs {
+            border-bottom: 1px solid #ebebeb;
+            display: inline-flex !important;
+        }
+
+        .custom-tabs .nav-item {
+            margin-bottom: -1px;
+        }
+
+        .custom-tabs .nav-link {
+            border: none;
+            color: #999;
+            font-size: 14px;
+            font-weight: 600;
+            margin: 0 20px;
+            padding: 10px 0;
+            background: transparent;
+            border-bottom: 2px solid transparent;
+            transition: color 0.3s ease;
+        }
+
+        .custom-tabs .nav-link:hover {
+            color: #000;
+        }
+
+        .custom-tabs .nav-link.active {
+            font-weight: 800;
+            color: #000;
+            border-bottom: 2px solid #000;
+        }
+
+        .product-card {
+            text-align: left;
+        }
+
+        .product-card img {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .product-title {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .product-price {
+            font-weight: 700;
+            color: #000;
+            font-size: 14px;
+        }
+
+        .stars i {
+            color: #000;
+            font-size: 10px;
+        }
+
+        .swatch-group img {
+            width: 35px;
+            height: 35px;
+            object-fit: cover;
+            transition: transform 0.2s ease, z-index 0.2s ease;
+        }
+
+        .swatch-group img+img {
+            margin-left: -10px;
+        }
+
+        .swatch-group img:hover {
+            z-index: 10;
+            transform: scale(1.2);
+        }
+
+        .footer-social-icons i {
+            font-size: 16px;
+            color: #000;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .footer-social-icons i:hover {
+            color: #777;
+        }
+
+        .footer-link {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer ul li a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        @media (min-width: 768px) {
+            .absolute-md-center {
+                position: absolute !important;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: transparent !important;
+                z-index: 10;
+            }
+        }
+
+        .hide-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .hide-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 32%;
+            transform: translateY(-50%);
+            z-index: 10;
+            cursor: pointer;
+            border: none !important;
+            outline: none !important;
+            background: transparent !important;
+            box-shadow: none !important;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+        }
+
+        .slider-btn-prev {
+            left: 10px;
+            font-size: 26px;
+        }
+
+        .slider-btn-next {
+            right: 10px;
+            font-size: 26px;
+        }
+
+        @media (min-width: 768px) {
+            .slider-btn {
+                width: 45px !important;
+                height: 45px !important;
+                background: #fff !important;
+                border-radius: 50% !important;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15) !important;
+                font-size: 16px;
+                top: 40%;
+            }
+
+            .slider-btn-prev {
+                left: -15px;
+            }
+
+            .slider-btn-next {
+                right: -15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="custom-header bg-white pt-3 pb-3">
+        <div class="container-fluid px-3 px-lg-0">
+            <div class="row align-items-center g-0">
+
+                <div class="col-lg-5 d-none d-lg-block order-lg-1">
+                    <div class="social-icons d-flex gap-4 pb-3 border-bottom ps-4 ps-lg-5">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-brands fa-pinterest"></i>
+                        <i class="fa-brands fa-vimeo-v"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                    <nav class="nav gap-4 pt-3 fw-bold ps-4 ps-lg-5">
+                        <a class="nav-link p-0 text-dark" href="#">HOME</a>
+                        <a class="nav-link p-0 text-dark" href="#">PAGES</a>
+                        <a class="nav-link p-0 text-dark" href="#">WOMEN</a>
+                        <a class="nav-link p-0 text-dark" href="#">MEN</a>
+                        <a class="nav-link p-0 text-dark" href="#">BLOG</a>
+                    </nav>
+                </div>
+
+                <div class="col-auto col-lg-2 text-center order-1 order-lg-2 pe-3 pe-lg-0">
+                    <h1 class="fw-bold mb-0 logo-text d-none d-lg-block">Salehub</h1>
+                    <h1 class="fw-bold mb-0 d-lg-none" style="font-size: 26px; letter-spacing: -1px;">Salehub</h1>
+                    <span class="text-uppercase fw-bold logo-subtext d-none d-lg-block">Elite Fashion Store</span>
+                </div>
+
+                <div class="col order-2 d-lg-none position-relative">
+                    <input type="text" class="form-control rounded-pill border-0 shadow-none"
+                        placeholder="What are you looking for ?"
+                        style="background-color: #f4f4f4; padding: 10px 40px 10px 20px; font-size: 13px; color: #888;">
+                    <i class="fas fa-search position-absolute top-50 translate-middle-y text-dark"
+                        style="right: 15px; cursor: pointer; font-size: 15px;"></i>
+                </div>
+
+                <div class="col-auto order-3 d-lg-none ps-3">
+                    <i class="fas fa-bars" style="font-size: 22px; cursor: pointer;" data-bs-toggle="offcanvas"
+                        data-bs-target="#mobileMenu"></i>
+                </div>
+
+                <div class="col-lg-5 d-none d-lg-block order-lg-3">
+                    <div
+                        class="utility-icons d-flex justify-content-end align-items-center gap-4 pb-3 border-bottom pe-4 pe-lg-5">
+                        <i class="fas fa-search fs-5"></i>
+                        <div class="vr" style="height: 20px; opacity: 0.15;"></div>
+                        <div class="position-relative">
+                            <i class="far fa-user fs-5"></i>
+                            <i class="fas fa-bars position-absolute"
+                                style="font-size: 0.5rem; bottom: 0; right: -6px;"></i>
+                        </div>
+                        <div class="vr" style="height: 20px; opacity: 0.15;"></div>
+                        <div class="position-relative">
+                            <i class="fas fa-shopping-bag fs-5"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle cart-badge fw-bold">0</span>
+                        </div>
+                    </div>
+
+                    <nav class="nav justify-content-end gap-4 pt-3 fw-bold pe-4 pe-lg-5">
+                        <a class="nav-link p-0 text-dark" href="#">CONTACT US</a>
+                        <a class="nav-link p-0 text-dark" href="#">ABOUT US</a>
+                        <a class="nav-link p-0 text-dark" href="#">SERVICES</a>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu" style="max-width: 80vw;">
+        <div class="offcanvas-header border-bottom py-4 px-4">
+            <h5 class="offcanvas-title fw-bold mb-0" style="font-size: 24px; letter-spacing: -1px;">Salehub</h5>
+            <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body px-4 py-4">
+
+            <ul class="nav flex-column fw-bold gap-3 mb-5" style="font-size: 14px;">
+                <li class="nav-item border-bottom pb-2"><a class="nav-link text-dark p-0" href="#">HOME</a></li>
+                <li class="nav-item border-bottom pb-2"><a class="nav-link text-dark p-0" href="#">PAGES</a></li>
+                <li class="nav-item border-bottom pb-2"><a class="nav-link text-dark p-0" href="#">WOMEN</a></li>
+                <li class="nav-item border-bottom pb-2"><a class="nav-link text-dark p-0" href="#">MEN</a></li>
+                <li class="nav-item"><a class="nav-link text-dark p-0" href="#">BLOG</a></li>
+            </ul>
+
+            <ul class="nav flex-column gap-3 mb-5 text-muted" style="font-size: 13px;">
+                <li class="nav-item"><a class="nav-link text-muted p-0" href="#">CONTACT US</a></li>
+                <li class="nav-item"><a class="nav-link text-muted p-0" href="#">ABOUT US</a></li>
+                <li class="nav-item"><a class="nav-link text-muted p-0" href="#">SERVICES</a></li>
+            </ul>
+
+            <div class="d-flex gap-4 fs-5 mt-auto pt-3 border-top">
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-pinterest"></i>
+                <i class="fa-brands fa-vimeo-v"></i>
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid px-0 mt-4 mb-5">
+        <div class="row g-0 g-md-4 mx-0">
+
+            <div class="col-12 col-md-4 mb-5 mb-md-0 p-0 px-md-2">
+                <div class="banner-card">
+                    <img src="public/images/img-1_7dd86fb4-81ac-4752-840a-f799986aa590_1080x.jpg"
+                        alt="Cropped Graphic T-Shirt" class="w-100">
+                    <div class="banner-content">
+                        <h5>Cropped Graphic T-Shirt</h5>
+                        <button class="btn btn-custom">Buy Now</button>
+                    </div>
+                </div>
+                <div class="d-flex flex-column align-items-center justify-content-center text-center mt-4 mt-md-5 px-3">
+                    <h6 class="m-0 mb-2 fw-bold text-uppercase" style="font-size: 14px; letter-spacing: 0.5px;">30 DAYS
+                        RETURN</h6>
+                    <p class="m-0 text-muted" style="font-size: 13px;">Simply return it within 30 days for an exchange.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 mb-5 mb-md-0 p-0 px-md-2">
+                <div class="banner-card">
+                    <img src="public/images/img-2_9c6b0dde-b59b-44ae-812c-0f74862db5dc_1080x.jpg" alt="Raglan Sweater"
+                        class="w-100">
+                    <div class="banner-content">
+                        <h5>Raglan Sweater</h5>
+                        <button class="btn btn-custom">Buy Now</button>
+                    </div>
+                </div>
+                <div class="d-flex flex-column align-items-center justify-content-center text-center mt-4 mt-md-5 px-3">
+                    <h6 class="m-0 mb-2 fw-bold text-uppercase" style="font-size: 14px; letter-spacing: 0.5px;">FREE US
+                        DELIVERY</h6>
+                    <p class="m-0 text-muted" style="font-size: 13px;">On orders over $200!</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 mb-5 mb-md-0 p-0 px-md-2">
+                <div class="banner-card">
+                    <img src="public/images/img-3_d0d56b80-3fd9-4b23-86d5-8d644d12f701_1080x.jpg" alt="Sleeve Hoodie"
+                        class="w-100">
+                    <div class="banner-content">
+                        <h5>Sleeve Hoodie</h5>
+                        <button class="btn btn-custom">Buy Now</button>
+                    </div>
+                </div>
+                <div class="d-flex flex-column align-items-center justify-content-center text-center mt-4 mt-md-5 px-3">
+                    <h6 class="m-0 mb-2 fw-bold text-uppercase" style="font-size: 14px; letter-spacing: 0.5px;">SUPPORT
+                        24/7</h6>
+                    <p class="m-0 text-muted" style="font-size: 13px;">Contact us 24 hours a day, 7 days a week.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid px-0 mb-5 d-none d-md-block">
+        <div class="d-flex align-items-center justify-content-center"
+            style="min-height: 450px; position: relative; overflow: hidden;">
+            <div class="position-absolute w-100 h-100 top-0 start-0" style="z-index: 0;">
+                <div class="row g-0 h-100">
+                    <div class="col-6 h-100">
+                        <img src="public/images/img-4_fe303373-37aa-43ea-9bc2-3645ed8122c4_1512x.webp"
+                            alt="Backpack Left" class="w-100 h-100 object-fit-cover">
+                    </div>
+                    <div class="col-6 h-100">
+                        <img src="public/images/img-5_bde7cdca-520a-4a79-9e32-ec29567c9fa6_1512x.webp"
+                            alt="Backpack Right" class="w-100 h-100 object-fit-cover">
+                    </div>
+                </div>
+            </div>
+            <div class="text-center z-1 position-absolute">
+                <h2 class="section-title mb-3">Backpacks for Back to School</h2>
+                <p class="mb-4" style="font-size: 15px;">Now in New Colors</p>
+                <div>
+                    <button class="btn btn-custom me-2">For Her</button>
+                    <button class="btn btn-custom">For Him</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid px-0 mb-5 d-md-none">
+        <div class="text-center py-5 bg-white">
+            <h2 class="section-title mb-3 fs-5">BACKPACKS FOR BACK TO SCHOOL</h2>
+            <p class="mb-4 text-muted" style="font-size: 14px;">Now in New Colors</p>
+            <div class="d-flex justify-content-center gap-5">
+                <button class="btn btn-flat border-0 fw-bold bg-transparent px-0 text-uppercase text-dark"
+                    style="font-size: 11px;">For Her</button>
+                <button class="btn btn-flat border-0 fw-bold bg-transparent px-0 text-uppercase text-dark"
+                    style="font-size: 11px;">For Him</button>
+            </div>
+        </div>
+        <div class="d-flex flex-column">
+            <img src="public/images/img-4_fe303373-37aa-43ea-9bc2-3645ed8122c4_1512x.webp" alt="Backpack Left"
+                class="w-100 object-fit-cover" style="height: 500px;">
+            <img src="public/images/img-5_bde7cdca-520a-4a79-9e32-ec29567c9fa6_1512x.webp" alt="Backpack Right"
+                class="w-100 object-fit-cover" style="height: 500px;">
+        </div>
+    </div>
+
+    <div class="container my-5 py-4 text-center">
+        <h3 class="fw-bold mb-4 text-uppercase" style="font-size: 22px; letter-spacing: 1px;">Gotta Have It</h3>
+
+        <div class="d-flex justify-content-center mb-5 mx-auto">
+            <ul class="nav custom-tabs justify-content-center" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button
+                        class="nav-link active shadow-none bg-transparent fw-bold text-dark border-0 border-bottom border-dark border-2 rounded-0 px-3"
+                        data-bs-toggle="tab" type="button" style="font-size: 14px;">New Arrivals</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link shadow-none bg-transparent text-muted border-0 px-3 fw-bold"
+                        data-bs-toggle="tab" type="button" style="font-size: 14px;">Best Sellers</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link shadow-none bg-transparent text-muted border-0 px-3 fw-bold"
+                        data-bs-toggle="tab" type="button" style="font-size: 14px;">On Sale</button>
+                </li>
+            </ul>
+        </div>
+
+        <div class="position-relative px-1 px-md-0">
+
+            <button class="slider-btn slider-btn-prev shadow-none" onclick="slideSlider('left')"><i
+                    class="fas fa-chevron-left"></i></button>
+            <button class="slider-btn slider-btn-next shadow-none" onclick="slideSlider('right')"><i
+                    class="fas fa-chevron-right"></i></button>
+
+            <div class="row flex-nowrap overflow-auto hide-scroll text-start mx-0 gx-3" id="gottaHaveItSlider"
+                style="scroll-behavior: smooth;">
+
+                <div class="col-6 col-md-4">
+                    <div class="product-card">
+                        <img src="public/images/1_b5ddc236-576a-4f61-9439-8ccc8f44d2c4_720x.jpg" alt="Product"
+                            class="w-100 object-fit-cover mb-3">
+                        <p class="product-title m-0 fw-bold" style="font-size: 14px;">High collar quilted jacket</p>
+                        <div class="stars my-1" style="font-size: 12px;">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="product-price fw-bold m-0 mt-2" style="font-size: 14px;">$132.00</p>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4">
+                    <div class="product-card">
+                        <img src="public/images/1_4b80156e-4a28-40af-a292-dc465bf35b1a_720x.jpg" alt="Product"
+                            class="w-100 object-fit-cover mb-3">
+                        <p class="product-title m-0 fw-bold" style="font-size: 14px;">Blended wool coat</p>
+                        <div class="stars my-1"
+                            style="font-size: 12px; color: #fff; text-shadow: 0 0 1px #000, 0 0 1px #000;">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="product-price fw-bold m-0 mt-2" style="font-size: 14px;">$156.00</p>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4">
+                    <div class="product-card">
+                        <img src="public/images/1_35559729-bb4f-477a-afbb-d695451b9719_540x.jpg" alt="Product"
+                            class="w-100 object-fit-cover mb-3">
+                        <p class="product-title m-0 fw-bold" style="font-size: 14px;">Eco Aware organic cotton top</p>
+                        <div class="stars my-1" style="font-size: 12px;">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="product-price fw-bold m-0 mt-2" style="font-size: 14px;">$39.00</p>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4">
+                    <div class="product-card">
+                        <img src="public/images/5_225b97d3-5005-45cf-b46e-3d7d6ea50d47_720x.jpg" alt="Product"
+                            class="w-100 object-fit-cover mb-3">
+                        <p class="product-title m-0 fw-bold" style="font-size: 14px;">Classic Denim Jacket</p>
+                        <div class="stars my-1" style="font-size: 12px;">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="far fa-star"></i>
+                        </div>
+                        <p class="product-price fw-bold m-0 mt-2" style="font-size: 14px;">$89.00</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid px-0 my-5 pt-4">
+        <div class="d-flex align-items-center justify-content-center text-center position-relative"
+            style="min-height: 600px; padding: 50px 20px;">
+            <img src="public/images/img-6_73391dcc-a4aa-4157-9ed4-afde245916b7_2048x.webp" alt="Denim"
+                class="position-absolute w-100 h-100 object-fit-cover" style=" z-index: 0;">
+
+            <div class="z-1">
+                <h2 class="section-title mb-3" style="font-size: 32px;">Denim Collection</h2>
+                <p class="mb-4 text-muted mx-auto" style="max-width: 600px; font-size: 14px; line-height: 1.6;">
+                    Discover SaleHub denim collection, with mom fit, skinny, high-rise, baggy styles. Shop our must-have
+                    jeans in a wide range of washes, colors, cut & styles.
+                </p>
+                <div class="d-flex justify-content-center gap-3">
+                    <button class="btn btn-outline-custom bg-white">Shop New Arrivals</button>
+                    <button class="btn btn-outline-custom bg-white">Shop Best Sellers</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid px-4 px-lg-5 my-5 pb-5 text-center">
+        <h3 class="section-title mb-5">Summer Trending</h3>
+
+        <div class="row g-4 text-start">
+
+            <div class="col-md-6">
+                <div class="product-card">
+                    <img src="public/images/1_bc70b428-ba01-434a-87f7-7fc276929722_540x.jpg" alt="Summer"
+                        class="w-100 object-fit-cover">
+
+                    <div class="d-flex justify-content-between align-items-start mt-3">
+                        <div>
+                            <p class="product-title m-0 fw-bold" style="font-size: 14px;">Eco denim un-jeans collection
+                            </p>
+                            <div class="stars my-1" style="font-size: 11px;">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="product-price m-0 fw-bold mt-2" style="font-size: 14px;">$47.00</p>
+                        </div>
+
+                        <div class="d-flex swatch-group">
+                            <img src="public/images/1_bc70b428-ba01-434a-87f7-7fc276929722_540x.jpg"
+                                class="rounded-circle border border-2 border-white" alt="Color">
+                            <img src="public/images/5_f262bbb4-ddec-4217-8446-2ac307e0ad96_50x50.jpg"
+                                class="rounded-circle border border-2 border-white" alt="Color">
+                            <img src="public/images/9_50x50.jpg" class="rounded-circle border border-2 border-white"
+                                alt="Color">
+                            <img src="public/images/1_c02958e8-91cd-4497-83ce-e5509baad4b4_720x.jpg"
+                                class="rounded-circle border border-2 border-white" alt="Color">
+                            <img src="public/images/blog-2_900x.png" class="rounded-circle border border-2 border-white"
+                                alt="Color">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="product-card">
+                    <img src="public/images/1_35559729-bb4f-477a-afbb-d695451b9719_540x.jpg" alt="Summer"
+                        class="w-100 object-fit-cover">
+
+                    <div class="d-flex justify-content-between align-items-start mt-3">
+                        <div>
+                            <p class="product-title m-0 fw-bold" style="font-size: 14px;">Eco denim un-jeans collection
+                            </p>
+                            <div class="stars my-1" style="font-size: 11px;">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="product-price m-0 fw-bold mt-2" style="font-size: 14px;">$39.00</p>
+                        </div>
+
+                        <div class="d-flex swatch-group">
+                            <img src="public/images/1_35559729-bb4f-477a-afbb-d695451b9719_540x.jpg"
+                                class="rounded-circle border border-2 border-white" alt="Color">
+                            <img src="public/images/5_f262bbb4-ddec-4217-8446-2ac307e0ad96_50x50.jpg"
+                                class="rounded-circle border border-2 border-white" alt="Color">
+                            <img src="public/images/9_50x50.jpg" class="rounded-circle border border-2 border-white"
+                                alt="Color">
+                            <img src="public/images/1_c02958e8-91cd-4497-83ce-e5509baad4b4_720x.jpg"
+                                class="rounded-circle border border-2 border-white" alt="Color">
+                            <img src="public/images/blog-2_900x.png" class="rounded-circle border border-2 border-white"
+                                alt="Color">
+                            <img src="public/images/1_4b6df0cc-511d-4f31-8475-08b1346b1921_540x.jpg"
+                                class="rounded-circle border border-2 border-white" alt="Color">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="product-card">
+                    <img src="public/images/5_225b97d3-5005-45cf-b46e-3d7d6ea50d47_720x.jpg" alt="Summer"
+                        class="w-100 object-fit-cover">
+
+                    <div class="d-flex justify-content-between align-items-start mt-3">
+                        <div>
+                            <p class="product-title m-0 fw-bold" style="font-size: 14px;">Basic denim jacket</p>
+                            <div class="stars my-1" style="font-size: 11px;">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="product-price m-0 fw-bold mt-2" style="font-size: 14px;">$33.00</p>
+                        </div>
+
+                        <div class="d-flex swatch-group">
+                            <img src="public/images/5_225b97d3-5005-45cf-b46e-3d7d6ea50d47_720x.jpg"
+                                class="rounded-circle border border-2 border-white" alt="Color">
+                            <img src="public/images/5_f262bbb4-ddec-4217-8446-2ac307e0ad96_50x50.jpg"
+                                class="rounded-circle border border-2 border-white" alt="Color">
+                            <img src="public/images/9_50x50.jpg" class="rounded-circle border border-2 border-white"
+                                alt="Color">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="product-card">
+                    <img src="public/images/1_b5ddc236-576a-4f61-9439-8ccc8f44d2c4_720x.jpg" alt="Summer"
+                        class="w-100 object-fit-cover">
+
+                    <div class="d-flex justify-content-between align-items-start mt-3">
+                        <div>
+                            <p class="product-title m-0 fw-bold" style="font-size: 14px;">Basic olive rucksack jacket
+                            </p>
+                            <div class="stars my-1" style="font-size: 11px;">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="product-price m-0 fw-bold mt-2" style="font-size: 14px;">$132.00</p>
+                        </div>
+
+                        <div class="d-flex swatch-group">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container my-5 py-5 text-center">
+        <h3 class="section-title mb-4" style="letter-spacing: 1px;">LET'S BE FRIENDS</h3>
+        <div class="text-muted" style="font-size: 13px; line-height: 2;">
+            <p class="m-0">Follow us: @salehub</p>
+            <p class="m-0">Share your style: #salehubstyle</p>
+            <p class="mb-4">Share your pup's style: #salehub</p>
+            <p class="m-0">We obsessively watch those hashtags - share a pic and you might be featured :)</p>
+        </div>
+    </div>
+
+    <div class="container-fluid px-0">
+        <div class="row g-0">
+            <div class="col-6 col-md-3">
+                <img src="public/images/lb-1_88ecbdcc-c1c6-47af-9cb5-1f21ebae7c4c_720x.png"
+                    class="w-100 object-fit-cover" style="aspect-ratio: 1/1;" alt="Insta 1">
+            </div>
+            <div class="col-6 col-md-3">
+                <img src="public/images/blog-2_900x.png" class="w-100 object-fit-cover" style="aspect-ratio: 1/1;"
+                    alt="Insta 2">
+            </div>
+            <div class="col-6 col-md-3">
+                <img src="public/images/lb-4_d1d516ae-775a-453a-a97b-84c9e80f69cd_720x.png"
+                    class="w-100 object-fit-cover" style="aspect-ratio: 1/1;" alt="Insta 3">
+            </div>
+            <div class="col-6 col-md-3">
+                <img src="public/images/lb-5_fbd8fa3f-d8a8-4ef1-a023-c348c802ad38_720x.png"
+                    class="w-100 object-fit-cover" style="aspect-ratio: 1/1;" alt="Insta 4">
+            </div>
+        </div>
+    </div>
+
+    <footer style="background-color: hsl(45deg 28.57% 94.51%); font-size: 14px;" class="pt-5 mt-5">
+        <div class="container py-5">
+            <div class="row">
+
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <h6 class="fw-bold mb-4 text-uppercase" style="font-size: 14px; letter-spacing: 0.5px;">Newsletter
+                    </h6>
+                    <p class="text-muted mb-4 pe-md-5" style="line-height: 1.8;">Receive our weekly newsletter. For
+                        dietary content, fashion insider and the best offers.</p>
+
+                    <form class="d-flex mb-5 pe-md-4" onsubmit="event.preventDefault();">
+                        <input type="email" class="form-control rounded-0 shadow-none bg-white"
+                            placeholder="Email address"
+                            style="font-size: 14px; padding: 12px 15px; border: 1px solid #1a1a1a; border-right: none;">
+                        <button type="submit" class="btn rounded-0 px-5 fw-bold text-white shadow-none"
+                            style="background-color: #1a1a1a; letter-spacing: 1px;">Join</button>
+                    </form>
+
+                    <div class="text-muted mb-5">
+                        <p class="mb-3">We're available by phone <strong class="text-dark">+123-456-789</strong></p>
+                        <p class="mb-3">info@example.com</p>
+                        <p class="mb-0">Monday till Friday 10 to 6 EST</p>
+                    </div>
+
+                    <h6 class="fw-bold mb-4 text-uppercase" style="font-size: 14px; letter-spacing: 0.5px;">Get more
+                        reserved on:</h6>
+                    <div class="d-flex gap-4 fs-6 text-dark">
+                        <i class="fab fa-facebook-f" style="cursor: pointer;"></i>
+                        <i class="fab fa-twitter" style="cursor: pointer;"></i>
+                        <i class="fab fa-pinterest" style="cursor: pointer;"></i>
+                        <i class="fab fa-vimeo-v" style="cursor: pointer;"></i>
+                        <i class="fab fa-instagram" style="cursor: pointer;"></i>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 ms-auto">
+                    <div class="row gy-5">
+
+                        <div class="col-6">
+                            <h6 class="fw-bold mb-4 text-uppercase" style="font-size: 14px; letter-spacing: 0.5px;">
+                                About Us</h6>
+                            <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                                <li><a href="#" class="text-muted text-decoration-none footer-link">About Us</a></li>
+                                <li><a href="#" class="text-muted text-decoration-none footer-link">Contact us</a></li>
+                                <li><a href="#" class="text-muted text-decoration-none footer-link">Factories</a></li>
+                                <li><a href="#" class="text-muted text-decoration-none footer-link">Careers</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-6">
+                            <h6 class="fw-bold mb-4 text-uppercase" style="font-size: 14px; letter-spacing: 0.5px;">My
+                                Account</h6>
+                            <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                                <li><a href="#" class="text-muted text-decoration-none footer-link">Login</a></li>
+                                <li><a href="#" class="text-muted text-decoration-none footer-link">Register</a></li>
+                                <li><a href="#" class="text-muted text-decoration-none footer-link">My Wishlist</a></li>
+                                <li><a href="#" class="text-muted text-decoration-none footer-link">Check Out</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-6">
+                            <h6 class="fw-bold mb-4 text-uppercase" style="font-size: 14px; letter-spacing: 0.5px;">
+                                Orders and Returns</h6>
+                            <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                                <li><a href="#" class="text-muted text-decoration-none footer-link">Help and advice</a>
+                                </li>
+                                <li><a href="#" class="text-muted text-decoration-none footer-link">Shipping &
+                                        Returns</a></li>
+                                <li><a href="#" class="text-muted text-decoration-none footer-link">Terms and
+                                        conditions</a></li>
+                                <li><a href="#" class="text-muted text-decoration-none footer-link">Refund Policy</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-6">
+                            <h6 class="fw-bold mb-4 text-uppercase" style="font-size: 14px; letter-spacing: 0.5px;">Our
+                                Product</h6>
+                            <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                                <li><a href="#" class="text-muted text-decoration-none footer-link">Best Sellers</a>
+                                </li>
+                                <li><a href="#" class="text-muted text-decoration-none footer-link">New Arrivals</a>
+                                </li>
+                                <li><a href="#" class="text-muted text-decoration-none footer-link">For Him</a></li>
+                                <li><a href="#" class="text-muted text-decoration-none footer-link">For her</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container-fluid py-4" style="border-top: 1px solid #e5e4e1;">
+            <div class="container">
+                <div class="row align-items-center" style="font-size: 13px;">
+                    <div class="col-md-4 text-center text-md-start mb-3 mb-md-0 text-muted">
+                        Copyright © 2021 Vinovathemes.
+                    </div>
+
+                    <div
+                        class="col-md-4 text-center mb-3 mb-md-0 d-flex justify-content-center align-items-center gap-3">
+                        <img src="public/images/paypal_240x.png" alt="logo" style="height: 20px; object-fit: contain;">
+                    </div>
+
+                    <div
+                        class="col-md-4 text-center text-md-end d-flex justify-content-center justify-content-md-end align-items-center">
+                        <span class="text-muted me-2">Choose Currency :</span>
+                        <strong class="text-dark fw-bold">USD</strong>
+
+
+                        <span onclick="window.scrollTo({ top: 0, behavior: 'smooth' });"
+                            class="ms-3 d-inline-flex justify-content-center align-items-center border rounded-circle cursor-pointer"
+                            style="width: 50px; height: 50px; border-color: #ccc !important; background-color: transparent; transition: all 0.3s ease;">
+                            <i class="fas fa-chevron-up text-muted" style="font-size: 14px;"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
